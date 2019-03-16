@@ -1,0 +1,156 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         2  0.0  0.0      0     0 ?        S    11:34   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    11:34   0:00  \_ [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    11:34   0:00  \_ [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [migration/0]
+root        11  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [cpuhp/0]
+root        12  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [cpuhp/1]
+root        13  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [migration/1]
+root        14  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [ksoftirqd/1]
+root        16  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/1:0H]
+root        17  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [cpuhp/2]
+root        18  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [migration/2]
+root        19  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [ksoftirqd/2]
+root        21  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/2:0H]
+root        22  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [cpuhp/3]
+root        23  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [migration/3]
+root        24  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [ksoftirqd/3]
+root        26  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/3:0H]
+root        27  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [kdevtmpfs]
+root        28  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [netns]
+root        33  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [khungtaskd]
+root        34  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [oom_reaper]
+root        35  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [writeback]
+root        36  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [kcompactd0]
+root        37  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [crypto]
+root        38  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kblockd]
+root        39  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [watchdogd]
+root        40  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [rpciod]
+root        41  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [xprtiod]
+root        42  0.0  0.0      0     0 ?        I    11:34   0:01  \_ [kworker/u8:1]
+root        44  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [kswapd0]
+root        45  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [nfsiod]
+root        55  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kthrotld]
+root        56  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [iscsi_eh]
+root        57  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [dwc_otg]
+root        58  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [DWC Notificatio]
+root        59  0.1  0.0      0     0 ?        S<   11:34   0:03  \_ [vchiq-slot/0]
+root        60  0.0  0.0      0     0 ?        S<   11:34   0:01  \_ [vchiq-recy/0]
+root        61  0.0  0.0      0     0 ?        S<   11:34   0:00  \_ [vchiq-sync/0]
+root        62  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [vchiq-keep/0]
+root        63  0.0  0.0      0     0 ?        S<   11:34   0:00  \_ [SMIO]
+root        65  0.0  0.0      0     0 ?        S    11:34   0:02  \_ [irq/92-mmc1]
+root        67  0.0  0.0      0     0 ?        S    11:34   0:01  \_ [mmcqd/0]
+root        68  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [scsi_eh_0]
+root        69  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [scsi_tmf_0]
+root        70  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [usb-storage]
+root        71  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [jbd2/mmcblk0p7-]
+root        72  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [ext4-rsv-conver]
+root        73  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [ipv6_addrconf]
+root        75  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [scsi_eh_1]
+root        76  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [scsi_tmf_1]
+root        77  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [usb-storage]
+root        88  0.0  0.0      0     0 ?        I<   11:34   0:01  \_ [kworker/0:1H]
+root        89  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [irq/169-usb-001]
+root       101  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/1:1H]
+root       131  0.0  0.0      0     0 ?        I    11:34   0:00  \_ [kworker/2:2]
+root       199  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [cfg80211]
+root       206  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [brcmf_wq/mmc1:0]
+root       208  0.0  0.0      0     0 ?        S    11:34   0:01  \_ [brcmf_wdog/mmc1]
+root       641  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/2:1H]
+root       723  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/u9:0]
+root       730  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/u9:1]
+root       765  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [kworker/3:1H]
+root       767  0.0  0.0      0     0 ?        S<   11:34   0:00  \_ [krfcommd]
+root       864  0.0  0.0      0     0 ?        S    11:34   0:00  \_ [jbd2/mmcblk0p5-]
+root       865  0.0  0.0      0     0 ?        I<   11:34   0:00  \_ [ext4-rsv-conver]
+root      4711  0.0  0.0      0     0 ?        I    11:44   0:00  \_ [kworker/3:1]
+root     11836  0.0  0.0      0     0 ?        I    11:50   0:01  \_ [kworker/u8:3]
+root     12460  0.0  0.0      0     0 ?        I    11:51   0:00  \_ [kworker/3:2]
+root     17474  0.1  0.0      0     0 ?        I    12:07   0:00  \_ [kworker/u8:0]
+root     17679  0.0  0.0      0     0 ?        I    12:08   0:00  \_ [kworker/1:0]
+root     18268  0.0  0.0      0     0 ?        I    12:10   0:00  \_ [kworker/0:3]
+root     19033  0.0  0.0      0     0 ?        I    12:13   0:00  \_ [kworker/1:2]
+root     19141  0.0  0.0      0     0 ?        I    12:13   0:00  \_ [kworker/2:0]
+root     19669  0.0  0.0      0     0 ?        I    12:15   0:00  \_ [kworker/0:0]
+root     20116  0.1  0.0      0     0 ?        I    12:17   0:00  \_ [kworker/u8:2]
+root     20303  0.0  0.0      0     0 ?        I    12:18   0:00  \_ [kworker/1:1]
+root     21022  0.0  0.0      0     0 ?        I    12:21   0:00  \_ [kworker/0:1]
+root         1  0.1  0.6  28252  6268 ?        Ss   11:34   0:03 /sbin/init splash
+root       100  0.0  0.5  27048  5292 ?        Ss   11:34   0:02 /lib/systemd/systemd-journald
+root       134  0.0  0.3  14816  3484 ?        Ss   11:34   0:00 /lib/systemd/systemd-udevd
+systemd+   272  0.0  0.3  17284  3672 ?        Ssl  11:34   0:00 /lib/systemd/systemd-timesyncd
+message+   300  0.0  0.4   6740  3804 ?        Ss   11:34   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+root       302  0.0  0.2   5300  2420 ?        Ss   11:34   0:00 /usr/sbin/cron -f
+root       303  0.0  0.2  23748  2628 ?        Ssl  11:34   0:00 /usr/sbin/rsyslogd -n
+root       305  0.0  0.4   7384  4180 ?        Ss   11:34   0:00 /lib/systemd/systemd-logind
+avahi      308  0.0  0.2   6404  2760 ?        Ss   11:34   0:00 avahi-daemon: running [raspberrypi.local]
+avahi      354  0.0  0.0   6404   324 ?        S    11:34   0:00  \_ avahi-daemon: chroot helper
+root       309  0.0  0.8  52896  7660 ?        Ssl  11:34   0:00 /usr/sbin/ModemManager
+nobody     320  0.0  0.2   5296  2400 ?        Ss   11:34   0:00 /usr/sbin/thd --triggers /etc/triggerhappy/triggers.d/ --socket /run/thd.socket --user nobody --deviceglob /dev/input/event*
+root       322  0.0  0.6  15048  6384 ?        Ss   11:34   0:00 /usr/sbin/cupsd -l
+lp         462  0.0  0.4  12268  4740 ?        S    11:34   0:00  \_ /usr/lib/cups/notifier/dbus dbus://
+root       361  0.0  0.1   2948  1724 ?        Ss   11:34   0:01 /sbin/dhcpcd -q -b
+root       363  0.0  0.8  35164  7972 ?        Ssl  11:34   0:00 /usr/sbin/cups-browsed
+root       370  0.0  0.2   5688  2728 ?        Ss   11:34   0:00 /usr/bin/vncserver-x11-serviced -fg
+root       416  0.0  1.9  37848 18136 ?        Sl   11:34   0:01  \_ /usr/bin/vncserver-x11-core -service
+root       382  0.0  0.7  39960  7324 ?        Ssl  11:34   0:00 /usr/sbin/lightdm
+root       466  0.2  4.9 141024 46732 tty7     Ssl+ 11:34   0:07  \_ /usr/lib/xorg/Xorg :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root       551  0.0  0.8  32392  7904 ?        Sl   11:34   0:00  \_ lightdm --session-child 14 17
+pi         567  0.0  1.2  52188 12228 ?        Ssl  11:34   0:00      \_ /usr/bin/lxsession -s LXDE-pi -e LXDE
+pi         636  0.0  0.0   3800   228 ?        Ss   11:34   0:00          \_ /usr/bin/ssh-agent x-session-manager
+pi         666  0.0  1.4  52656 13604 ?        S    11:34   0:00          \_ openbox --config-file /home/pi/.config/openbox/lxde-pi-rc.xml
+pi         668  0.0  0.9  42752  8848 ?        Sl   11:34   0:00          \_ lxpolkit
+pi         671  0.5  2.7 144360 26460 ?        Sl   11:34   0:15          \_ lxpanel --profile LXDE-pi
+pi         783  0.0  0.0      0     0 ?        Z    11:34   0:00          |   \_ [sh] <defunct>
+pi         672  0.0  2.0  77888 19920 ?        Sl   11:34   0:01          \_ pcmanfm --desktop --profile LXDE-pi
+root       386  0.0  0.1   4196  1536 tty1     Ss+  11:34   0:00 /sbin/agetty --noclear tty1 linux
+root       430  0.0  0.9  41532  8856 ?        Ssl  11:34   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root       433  0.0  0.5  10212  5288 ?        Ss   11:34   0:00 /usr/sbin/sshd -D
+root     12504  0.0  0.6  11636  5864 ?        Ss   11:51   0:00  \_ sshd: pi [priv]
+pi       12526  0.1  0.3  11768  3428 ?        S    11:51   0:02  |   \_ sshd: pi@pts/0
+pi       12529  0.0  0.4   6196  4288 pts/0    Ss   11:51   0:00  |       \_ -bash
+pi       18110  0.5  4.0 150612 38424 pts/0    S+   12:09   0:04  |           \_ python3 ./alarm.py
+pi       20837  0.0  0.0   1900   380 pts/0    S+   12:20   0:00  |               \_ sh -c play -v 0.45 /media/pi/SHODAN/Music/03\ Everywhere\ I\ Go.mp3
+pi       20838  5.3  0.7 288680  6992 pts/0    Sl+  12:20   0:05  |                   \_ play -v 0.45 /media/pi/SHODAN/Music/03 Everywhere I Go.mp3
+root     18551  0.0  0.6  11636  5840 ?        Ss   12:11   0:00  \_ sshd: pi [priv]
+pi       18561  0.0  0.4  12000  4280 ?        S    12:11   0:00  |   \_ sshd: pi@pts/1
+pi       18564  0.0  0.4   6232  4312 pts/1    Ss   12:11   0:00  |       \_ -bash
+pi       21314  0.0  1.9 110936 18964 pts/1    Sl+  12:22   0:01  |           \_ python3 ./kill_alarm.py
+pi       21330  0.0  0.0   1900   384 pts/1    S+   12:22   0:00  |               \_ sh -c ps auxf > procs.txt
+pi       21331  0.0  0.3   7892  3104 pts/1    R+   12:22   0:00  |                   \_ ps auxf
+root     20889  0.2  0.6  11636  5824 ?        Ss   12:20   0:00  \_ sshd: pi [priv]
+pi       20911  0.0  0.3  11772  3512 ?        S    12:20   0:00      \_ sshd: pi@pts/2
+pi       20914  0.2  0.4   6196  4352 pts/2    Ss   12:20   0:00          \_ -bash
+pi       21009  3.0  0.3   5944  3516 pts/2    S+   12:21   0:02              \_ htop
+root       441  0.0  0.4  10136  4052 ?        Ss   11:34   0:02 wpa_supplicant -B -c/etc/wpa_supplicant/wpa_supplicant.conf -iwlan0 -Dnl80211,wext
+root       474  0.0  0.4   7412  3924 ?        Ss   11:34   0:00 /usr/sbin/apache2 -k start
+www-data   475  0.0  0.3 229812  3428 ?        Sl   11:34   0:00  \_ /usr/sbin/apache2 -k start
+www-data   476  0.0  0.3 229812  3428 ?        Sl   11:34   0:00  \_ /usr/sbin/apache2 -k start
+root       540  0.0  0.4   8528  4272 ?        S    11:34   0:00 /usr/bin/vncagent service 15
+pi         559  0.0  0.6   9768  5896 ?        Ss   11:34   0:00 /lib/systemd/systemd --user
+pi         562  0.0  0.1  11420  1388 ?        S    11:34   0:00  \_ (sd-pam)
+pi         576  0.0  0.3   6512  3564 ?        Ss   11:34   0:00  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation
+pi         644  0.0  0.6  39468  5744 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfsd
+pi         649  0.0  0.7  65840  6672 ?        Sl   11:34   0:00  \_ /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+pi         769  0.0  1.0  92764 10388 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+pi         796  0.0  0.5  38680  4956 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+pi         800  0.0  0.5  37156  5068 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfs-goa-volume-monitor
+pi         804  0.0  0.5  37108  4852 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfs-mtp-volume-monitor
+pi         808  0.0  0.5  50784  4868 ?        Ssl  11:34   0:00  \_ /usr/lib/gvfs/gvfs-afc-volume-monitor
+pi         846  0.0  0.8  51152  7996 ?        Sl   11:34   0:00  \_ /usr/lib/gvfs/gvfsd-trash --spawner :1.4 /org/gtk/gvfs/exec_spaw/0
+pi         679  0.0  0.0   3800   228 ?        Ss   11:34   0:00 /usr/bin/ssh-agent -s
+pi         708  1.1  0.9 356188  9432 ?        S<l  11:34   0:33 /usr/bin/pulseaudio --start --log-target=syslog
+rtkit      709  0.0  0.2  24164  2556 ?        SNsl 11:34   0:00 /usr/lib/rtkit/rtkit-daemon
+root       724  0.0  0.0   2096   152 ?        S    11:34   0:00 /usr/bin/hciattach /dev/serial1 bcm43xx 3000000 flow - b8:27:eb:3f:14:8f
+pi         728  0.0  1.3  27816 12456 ?        S    11:34   0:00 /usr/bin/vncserverui service 16
+pi         762  0.0  1.4  27208 14184 ?        S    11:34   0:00  \_ /usr/bin/vncserverui -statusicon 7
+root       738  0.0  0.3   7272  3796 ?        Ss   11:34   0:00 /usr/lib/bluetooth/bluetoothd
+pi         745  0.0  0.6  28572  6356 ?        Ssl  11:34   0:00 /usr/lib/menu-cache/menu-cached /run/user/1000/menu-cached-:0
+root       749  0.0  0.3  35036  3656 ?        Ssl  11:34   0:00 /usr/bin/bluealsa
+root       773  0.0  1.0  59576  9632 ?        Ssl  11:34   0:01 /usr/lib/udisks2/udisksd --no-debug
+root      3540  0.0  1.1  47356 11320 ?        Ssl  11:41   0:00 /usr/lib/packagekit/packagekitd
+icecast2 15667  0.0  0.7  55068  7580 ?        Sl   12:00   0:00 /usr/bin/icecast2 -b -c /etc/icecast2/icecast.xml

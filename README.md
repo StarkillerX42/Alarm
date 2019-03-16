@@ -9,3 +9,7 @@ cec_test.py is an attempt at booting up my TV from my pi while running the alarm
 
 ## Known Issues
 The pi can run a little hot processing a wave file. pygame seems to br thr best music player, but it really taxes the CPU and runs just below 80deg C. If you can find a more lightweight method, feel free to pull request.
+
+## TODO
+Create a weather messenger that uses gTTS to recite the weather in the morning
+

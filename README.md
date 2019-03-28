@@ -1,6 +1,6 @@
 # Alarm Clock
 
-This is my alarm clock for my raspberry pi. it works rather well with my setup, but you'll probably need to make some changes for implimentation on your own pi. for example, my music is stored on a USB called Shodan, which you'll need to change. None of my functions use main, sue me.
+This is my alarm clock for my raspberry pi. it works rather well with my setup, but you'll probably need to make some changes for implementation on your own pi. for example, my music is stored on a USB called Shodan, which you'll need to change. None of my functions use main, sue me.
 
 ## Files
 alarm.py runs the alarm, and is a file I run in crontab
@@ -11,5 +11,7 @@ cec_test.py is an attempt at booting up my TV from my pi while running the alarm
 The pi can run a little hot processing a wave file. pygame seems to br thr best music player, but it really taxes the CPU and runs just below 80deg C. If you can find a more lightweight method, feel free to pull request.
 
 ## TODO
-Create a weather messenger that uses gTTS to recite the weather in the morning
+Create a script to skip a song
+
+Remove waves and mp3s in favor of flacs
 

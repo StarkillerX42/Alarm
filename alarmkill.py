@@ -1,4 +1,3 @@
-import numpy as np
 import os
 print("Stopping alarm.py")
 os.system("ps auxf > procs.txt")

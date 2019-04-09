@@ -45,10 +45,6 @@ class AlarmClock:
         report = Weather()
         report.make_mp3()
         report.play_forecast()
-        tts = gTTS(text=report.forecast, lang='en')
-        tts.save("forecast.mp3")
-        os.system("play -q forecast.mp3")
-        os.system("rm forecast.mp3")
 
 
 def main():

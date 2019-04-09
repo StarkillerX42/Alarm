@@ -5,6 +5,7 @@ import os
 from gtts import gTTS
 from slackclient import SlackClient
 import starcoder42 as s
+from bs4 import BeautifulSoup
 
 
 class Weather:
@@ -12,19 +13,31 @@ class Weather:
 
         noaa_url = ("https://forecast.weather.gov/MapClick.php?site=BOU&text"
                     "Field1=40.0269&textField2=-105.251")
-        noaa_page = requests.get(noaa_url).text.split("\n")
-        subset_ind = noaa_page.index("<!-- 7-Day Forecast -->")
-        subset = noaa_page[subset_ind:subset_ind+15]
-        # print(subset[11])
-        self.forecast = subset[11].split('alt="')[1].split('. "')[0].split(": ")[1]
+        noaa_page = BeautifulSoup(requests.get(noaa_url).text, 'html.parser')
+        forecasts = noaa_page.find('ul', attrs={'id': 'seven-day-forecast-list'})
+        today = list(forecasts)[0]
+        img = today.find('img')
+        self.forecast = img.attrs['alt']
     
+    def convert_units(self):
+        first_sentence = self.forecast.split('.')[0]
+        temp_fs = []
+        for i, word in enumerate(first_sentence.split(' ')):
+            try:  # Appends numbers to a list, but keeps them as strings
+                int(word)
+                temp_fs.append(word)
+            except ValueError:
+                pass
+        for i, temp_f in enumerate(temp_fs):
+            temp_c = s.fahr2cel(temp_f)
+            self.forecast.replace(temp, str(temp_c))
     def make_mp3(self, filename: str = "forecast.mp3"):
         self.filename = filename
         tts = gTTS(text=self.forecast, lang="en")
         tts.save(filename)
     
     def play_forecast(self):
-        os.system("play {}".format(self.filename))
+        os.system("play -q {}".format(self.filename))
         os.system("rm {}".format(self.filename))
 
     def send_daily(self, key_file="oauth.key"):

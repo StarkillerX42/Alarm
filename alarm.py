@@ -34,6 +34,7 @@ class AlarmClock:
         vol_lvl = float(song_data[6].split()[-1])
         sub.call('play -q -v {} "{}"'.format(self.volume / vol_lvl, song),
                  shell=True)
+        print(self.volume/vol_lvl)
         now = datetime.datetime.now()
         dt = now - self.start
         return dt

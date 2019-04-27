@@ -24,8 +24,8 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.20
-        self.volume_final = 0.35
+        self.volume_init = 0.1
+        self.volume_final = 0.18
         self.volume = self.volume_init
 
     def play_song(self, song):
@@ -51,6 +51,9 @@ class AlarmClock:
                 self.volume = (self.volume_init + (self.volume_final
                                                    - self.volume_init)
                                * dt.seconds / 30 / 60)
+            else:
+                self.volume = self.volume_final
+
             if dt.seconds >= 1.5 * 3600:
                 sys.exit()
 

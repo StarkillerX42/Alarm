@@ -23,8 +23,8 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume = 0.45
-        self.dvol = 0.1
+        self.volume = 0.30
+        self.dvol = 0.01
 
     def play_song(self, song):
         song_data = sub.Popen('sox "{}" -n stat'.format(song), shell=True,

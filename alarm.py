@@ -3,9 +3,9 @@ import glob
 import numpy as np
 import datetime
 import sys
-import os
+import subprocess as sub
 from morning_weather import Weather
-from gtts import gTTS
+# from gtts import gTTS
 import starcoder42 as s
 
 
@@ -27,12 +27,11 @@ class AlarmClock:
         self.dvol = 0.1
 
     def play_song(self, song):
-        song_data = os.popen('sox "{}" -n stat'.format(song), 'r').read().split()
-        print(song_data)
-        print(len(song_data))
-        print(type(song_data))
-        vol_lvl = float(song_data[5].split(':')[-1])
-        os.system('play -q -v {} "{}"'.format(self.volume/vol_lvl, song))
+        song_data = sub.Popen('sox "{}" -n stat'.format(song), shell=True,
+                              stderr=sub.PIPE).stderr.readlines()
+        vol_lvl = float(song_data[6].split()[-1])
+        sub.Popen('play -q -v {} "{}"'.format(self.volume/vol_lvl, song),
+                  shell=True)
         now = datetime.datetime.now()
         dt = now - self.start
         return dt
@@ -42,7 +41,7 @@ class AlarmClock:
             s.iprint("Playing {}".format(song), 1)
             dt = self.play_song(song)
 
-            if (dt.seconds >= 30*60):
+            if dt.seconds >= 30*60:
                 if not self.played_weather:
                     self.play_weather()
                     self.played_weather = True
@@ -63,4 +62,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

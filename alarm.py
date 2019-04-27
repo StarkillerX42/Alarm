@@ -30,7 +30,7 @@ class AlarmClock:
         song_data = sub.Popen('sox "{}" -n stat'.format(song), shell=True,
                               stderr=sub.PIPE).stderr.readlines()
         vol_lvl = float(song_data[6].split()[-1])
-        sub.Popen('play -q -v {} "{}"'.format(self.volume/vol_lvl, song),
+        sub.call('play -q -v {} "{}"'.format(self.volume/vol_lvl, song),
                   shell=True)
         now = datetime.datetime.now()
         dt = now - self.start

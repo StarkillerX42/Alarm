@@ -23,9 +23,16 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
+        self.volume = 0.45
+        self.dvol = 0.1
 
     def play_song(self, song):
-        os.system('play -q -v 0.45 "{}"'.format(song))
+        song_data = os.popen('sox "{}" -n stat'.format(song), 'r').read().split()
+        print(song_data)
+        print(len(song_data))
+        print(type(song_data))
+        vol_lvl = float(song_data[5].split(':')[-1])
+        os.system('play -q -v {} "{}"'.format(self.volume/vol_lvl, song))
         now = datetime.datetime.now()
         dt = now - self.start
         return dt
@@ -35,9 +42,11 @@ class AlarmClock:
             s.iprint("Playing {}".format(song), 1)
             dt = self.play_song(song)
 
-            if (dt.seconds >= 30*60) and not self.played_weather:
-                self.play_weather()
-                self.played_weather = True
+            if (dt.seconds >= 30*60):
+                if not self.played_weather:
+                    self.play_weather()
+                    self.played_weather = True
+                self.volume += self.dvol
             if dt.seconds >= 1.5*3600:
                 sys.exit()
 

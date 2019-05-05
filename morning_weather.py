@@ -6,6 +6,7 @@ from gtts import gTTS
 from slackclient import SlackClient
 import starcoder42 as s
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 
 class Weather:
@@ -31,6 +32,7 @@ class Weather:
         for i, temp_f in enumerate(temp_fs):
             temp_c = s.fahr2cel(temp_f)
             self.forecast.replace(temp, str(temp_c))
+
     def make_mp3(self, filename: str = "forecast.mp3"):
         self.filename = filename
         tts = gTTS(text=self.forecast, lang="en")
@@ -40,10 +42,12 @@ class Weather:
         os.system("play -q {}".format(self.filename))
         os.system("rm {}".format(self.filename))
 
-    def send_daily(self, key_file="oauth.key"):
-        key = open(key_file, "r").read()
+    def send_daily(self, key_file="oauth.key", chnnl='#general'):
+        key_file = (Path(__file__).parent / Path(key_file)).absolute()
+        print(key_file)
+        key = key_file.open('r').read().strip('\n')
         sc = SlackClient(key)
-        response = sc.api_call("chat.postMessage", channel="@dylan.gatlin",
+        response = sc.api_call("chat.postMessage", channel=chnnl,
                                text=self.forecast)
         # response = sc.api_call("chat.postMessage",
         #                        channel="@Jordan Gage", text=self.forecast)
@@ -56,7 +60,7 @@ class Weather:
 
 def main():
     report = Weather()
-    response = report.send_daily()
+    response = report.send_daily('beancc_weather.key', '#general')
     if response["ok"]:
         pass
     else:

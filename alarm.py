@@ -19,7 +19,7 @@ class AlarmClock:
         s.iprint("Alarm started at {}".format(self.start), 0)
         wavs = glob.glob("/media/pi/SHODAN/Music/*.wav")
         mp3s = glob.glob("/media/pi/SHODAN/Music/*.mp3")
-        flacs = glob.glob("/media/pi/pi_blue/flacs/*/*.flac")
+        flacs = glob.glob("/media/pi/pi_red/flacs/*.flac")
         self.songs = np.array(wavs + mp3s + flacs)
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
@@ -34,7 +34,7 @@ class AlarmClock:
         vol_lvl = float(song_data[6].split()[-1])
         sub.call('play -q -v {} "{}"'.format(self.volume / vol_lvl, song),
                  shell=True)
-        print(self.volume/vol_lvl)
+        # print(self.volume/vol_lvl)
         now = datetime.datetime.now()
         dt = now - self.start
         return dt

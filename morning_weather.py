@@ -44,7 +44,7 @@ class Weather:
 
     def send_daily(self, key_file="oauth.key", chnnl='#general'):
         key_file = (Path(__file__).parent / Path(key_file)).absolute()
-        print(key_file)
+        # print(key_file)
         key = key_file.open('r').read().strip('\n')
         sc = SlackClient(key)
         response = sc.api_call("chat.postMessage", channel=chnnl,

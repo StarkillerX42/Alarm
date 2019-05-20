@@ -64,7 +64,7 @@ class AlarmClock:
         report = Weather()
         report.make_mp3()
         report.play_forecast()
-
+        report.send_dailty()
 
 def main():
     alarm = AlarmClock()

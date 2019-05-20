@@ -35,7 +35,7 @@ class Weather:
 
     def make_mp3(self, filename: str = "forecast.mp3"):
         self.filename = filename
-        tts = gTTS(text=self.forecast, lang="en")
+        tts = gTTS(text="Here is today's forecast. " + self.forecast, lang="en")
         tts.save(filename)
     
     def play_forecast(self):

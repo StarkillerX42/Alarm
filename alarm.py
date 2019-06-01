@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-import glob
 import numpy as np
 import datetime
 import sys
+import bluetooth as bt
 import subprocess as sub
-from morning_weather import Weather
-# from gtts import gTTS
+from pathlib import Path
 import starcoder42 as s
+from morning_weather import Weather
+from multiprocess import Process
 
 
 class AlarmClock:
@@ -17,16 +18,24 @@ class AlarmClock:
     def __init__(self):
         self.start = datetime.datetime.now()
         s.iprint("Alarm started at {}".format(self.start), 0)
-        wavs = glob.glob("/media/pi/SHODAN/Music/*.wav")
-        mp3s = glob.glob("/media/pi/SHODAN/Music/*.mp3")
-        flacs = glob.glob("/media/pi/pi_red/flacs/*.flac")
-        self.songs = np.array(wavs + mp3s + flacs)
+        shodan = Path('/media/pi/SHODAN/Music/')
+        wavs = shodan.rglob('*.wav')
+        mp3s = shodan.rglob('*.wav')
+        flacs = Path('/media/pi/pi_red/flacs/').rglob('*.flac')
+        self.songs = np.array(list(wavs) + list(mp3s) + list(flacs))
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
         self.volume_init = 0.05
         self.volume_final = 0.15
         self.volume = self.volume_init
+
+    def try_bluetooth(self):
+        nearby_devices = bt.discover_devices(lookup_names=True)
+        for addr, nam in nearby_devices:
+            if '6820' in nam:
+                sock = bt.BluetoothSocket(bt.RFCOMM)
+                sock.connect((addr, 1))
 
     def play_song(self, song):
         song_data = sub.Popen('sox "{}" -n stat'.format(song), shell=True,
@@ -42,14 +51,18 @@ class AlarmClock:
     def run(self):
         for song in self.songs:
             s.iprint("Playing {}".format(song), 1)
+            p = Process(self.try_bluetooth())
+            p.start()
             dt = self.play_song(song)
+            p.join()
 
             if dt.seconds >= 30 * 60:
                 if not self.played_weather:
                     try:
                         self.play_weather()
                         self.played_weather = True
-                    except Exception:
+                    except Exception as e:
+                        print(e)
                         self.played_weather = True
                 self.volume = (self.volume_init + (self.volume_final
                                                    - self.volume_init)

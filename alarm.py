@@ -21,12 +21,12 @@ class AlarmClock:
         shodan = Path('/media/pi/SHODAN/Music/')
         wavs = shodan.rglob('*.wav')
         mp3s = shodan.rglob('*.wav')
-        flacs = Path('/media/pi/pi_red/flacs/').rglob('*.flac')
+        flacs = Path('/media/pi/pi_red/flac/').rglob('*.flac')
         self.songs = np.array(list(wavs) + list(mp3s) + list(flacs))
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.05
+        self.volume_init = 0.06
         self.volume_final = 0.14
         self.volume = self.volume_init
 
@@ -77,7 +77,7 @@ class AlarmClock:
         report = Weather()
         report.make_mp3()
         report.play_forecast()
-        report.send_dailty()
+        report.send_daily()
 
 def main():
     alarm = AlarmClock()

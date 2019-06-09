@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/pi/berryconda3/bin/python
 import numpy as np
 import datetime
 import sys
@@ -21,7 +21,7 @@ class AlarmClock:
         shodan = Path('/media/pi/SHODAN/Music/')
         wavs = shodan.rglob('*.wav')
         mp3s = shodan.rglob('*.wav')
-        flacs = Path('/media/pi/pi_red/flacs/').rglob('*.flac')
+        flacs = Path('/media/pi/pi_red/flac/').rglob('*.flac')
         self.songs = np.array(list(wavs) + list(mp3s) + list(flacs))
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)

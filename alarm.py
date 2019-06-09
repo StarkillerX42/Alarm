@@ -26,7 +26,7 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.05
+        self.volume_init = 0.06
         self.volume_final = 0.14
         self.volume = self.volume_init
 
@@ -77,7 +77,7 @@ class AlarmClock:
         report = Weather()
         report.make_mp3()
         report.play_forecast()
-        report.send_dailty()
+        report.send_daily()
 
 def main():
     alarm = AlarmClock()

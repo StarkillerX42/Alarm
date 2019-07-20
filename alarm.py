@@ -79,6 +79,7 @@ class AlarmClock:
         report.play_forecast()
         report.send_daily('beancc_weather.key')
 
+
 def main():
     alarm = AlarmClock()
     alarm.run()

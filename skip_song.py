@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import subprocess as sub
 import numpy as np
+import starcoder42 as s
 
+s.iprint('Skipping song', 1)
 sub.call('ps auxf > procs.txt', shell=True)
 with open("procs.txt", "r") as proc_fil:
     lines = np.array(proc_fil.readlines())

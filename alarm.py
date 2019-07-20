@@ -26,7 +26,7 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.06
+        self.volume_init = 0.055
         self.volume_final = 0.14
         self.volume = self.volume_init
 
@@ -41,9 +41,9 @@ class AlarmClock:
         song_data = sub.Popen('sox "{}" -n stat'.format(song), shell=True,
                               stderr=sub.PIPE).stderr.readlines()
         vol_lvl = float(song_data[6].split()[-1])
-        sub.call('play -q -v {} "{}"'.format(self.volume / vol_lvl, song),
-                 shell=True)
         # print(self.volume/vol_lvl)
+        res = sub.call('play -q -v {} "{}"'.format(self.volume/vol_lvl, song),
+                       shell=True)
         now = datetime.datetime.now()
         dt = now - self.start
         return dt
@@ -77,7 +77,7 @@ class AlarmClock:
         report = Weather()
         report.make_mp3()
         report.play_forecast()
-        report.send_daily()
+        report.send_daily('beancc_weather.key')
 
 def main():
     alarm = AlarmClock()

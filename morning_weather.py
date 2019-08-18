@@ -12,8 +12,8 @@ from pathlib import Path
 class Weather:
     def __init__(self):
 
-        noaa_url = ("https://forecast.weather.gov/MapClick.php?site=BOU&text"
-                    "Field1=40.0269&textField2=-105.251")
+        noaa_url = ("https://forecast.weather.gov/MapClick.php?site=EPZ&textFie"
+                    "ld1=32.3361&textField2=-106.756&e=0#.XVhrtNZMHjs")
         noaa_page = BeautifulSoup(requests.get(noaa_url).text, 'html.parser')
         forecasts = noaa_page.find('ul', attrs={'id': 'seven-day-forecast-list'})
         today = list(forecasts)[0]

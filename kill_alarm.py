@@ -13,3 +13,5 @@ for proc in to_kill:
     # print(pid)
     sub.call(['kill', pid])
 sub.call(['rm', 'procs.txt'])
+sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
+

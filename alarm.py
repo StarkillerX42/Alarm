@@ -2,12 +2,10 @@
 import numpy as np
 import datetime
 import sys
-import bluetooth as bt
 import subprocess as sub
 from pathlib import Path
 import starcoder42 as s
 from morning_weather import Weather
-from multiprocess import Process
 
 
 class AlarmClock:
@@ -51,10 +49,10 @@ class AlarmClock:
     def run(self):
         for song in self.songs:
             s.iprint("Playing {}".format(song), 1)
-            p = Process(self.try_bluetooth())
-            p.start()
+            # p = Process(self.try_bluetooth())
+            # p.start()
             dt = self.play_song(song)
-            p.join()
+            # p.join()
 
             if dt.seconds >= 30 * 60:
                 if not self.played_weather:
@@ -81,8 +79,11 @@ class AlarmClock:
 
 
 def main():
+    sub.call('echo "on 0" | cec-client -s -d 1', shell=True)
+    sub.call('echo "as" | cec-client -s -d 1', shell=True)
     alarm = AlarmClock()
     alarm.run()
+    sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
 
 
 if __name__ == '__main__':

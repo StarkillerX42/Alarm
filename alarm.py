@@ -1,6 +1,7 @@
 #!/home/pi/berryconda3/bin/python
 import numpy as np
 import datetime
+import time
 import sys
 import subprocess as sub
 from pathlib import Path
@@ -80,6 +81,7 @@ class AlarmClock:
 
 def main():
     sub.call('echo "on 0" | cec-client -s -d 1', shell=True)
+    time.sleep(10)
     sub.call('echo "as" | cec-client -s -d 1', shell=True)
     alarm = AlarmClock()
     alarm.run()

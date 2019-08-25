@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess as sub
 import numpy as np
+import time
 
 sub.call('ps auxf > procs.txt', shell=True)
 with open("procs.txt", "r") as proc_fil:
@@ -13,5 +14,6 @@ for proc in to_kill:
     # print(pid)
     sub.call(['kill', pid])
 sub.call(['rm', 'procs.txt'])
-sub.call('echo "standby 200" | cec-client -s -d 1', shell=True)
+time.sleep(200)
+sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
 

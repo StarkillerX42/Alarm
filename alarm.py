@@ -28,6 +28,7 @@ class AlarmClock:
         self.volume_init = 0.055
         self.volume_final = 0.14
         self.volume = self.volume_init
+        sub.call('xscreensaver-command -activate', shell=True)
 
     def try_bluetooth(self):
         nearby_devices = bt.discover_devices(lookup_names=True)
@@ -70,7 +71,7 @@ class AlarmClock:
                 self.volume = self.volume_final
 
             if dt.seconds >= 1.5 * 3600:
-                sys.exit()
+                return 0
 
     def play_weather(self):
         report = Weather()

@@ -7,7 +7,7 @@ s.iprint('Skipping song', 1)
 sub.call('ps auxf > procs.txt', shell=True)
 with open("procs.txt", "r") as proc_fil:
     lines = np.array(proc_fil.readlines())
-is_song = np.array(["play -q -v" in proc for proc in lines])
+is_song = np.array(["play" in proc for proc in lines])
 to_kill = lines[is_song]
 for proc in to_kill:
     # print(proc)

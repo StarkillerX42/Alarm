@@ -17,6 +17,13 @@ class AlarmClock:
     def __init__(self):
         self.start = datetime.datetime.now()
         s.iprint("Alarm started at {}".format(self.start), 0)
+        tv_on = sub.call('echo "on 0" | cec-client -s -d 1', shell=True)
+        s.iprint(tv_on, 1)
+        tv_source = sub.call('echo "as" | cec-client -s -d 1 -p 1', shell=True)
+        s.iprint(tv_source, 1)
+        # Set volume to 16
+        # sub.call('echo "voldown 0" | cec-client -s -d 1 -p 1', shell=True)
+        # sub.call('echo "volup 16" | cec-client -s -d 1 -p 1', shell=True)
         shodan = Path('/media/pi/SHODAN/Music/')
         wavs = shodan.rglob('*.wav')
         mp3s = shodan.rglob('*.wav')
@@ -79,14 +86,15 @@ class AlarmClock:
         report.play_forecast()
         report.send_daily('beancc_weather.key')
 
+    def stop(self):
+        sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
+        sub.call('xscreensaver-command -deactivate', shell=True)
+
+
 
 def main():
-    sub.call('echo "on 0" | cec-client -s -d 1', shell=True)
-    time.sleep(10)
-    sub.call('echo "as" | cec-client -s -d 1', shell=True)
     alarm = AlarmClock()
     alarm.run()
-    sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
 
 
 if __name__ == '__main__':

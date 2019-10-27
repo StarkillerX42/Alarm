@@ -1,4 +1,4 @@
-#!/home/pi/berryconda3/bin/python
+#!/usr/bin/env python3
 import numpy as np
 import datetime
 import time
@@ -17,17 +17,18 @@ class AlarmClock:
     def __init__(self):
         self.start = datetime.datetime.now()
         s.iprint("Alarm started at {}".format(self.start), 0)
-        tv_on = sub.call('echo "on 0" | cec-client -s -d 1', shell=True)
+        tv_on = sub.call('echo "on 0" | cec-client -s -d 1 -p 3', shell=True)
         s.iprint(tv_on, 1)
-        tv_source = sub.call('echo "as" | cec-client -s -d 1 -p 1', shell=True)
+        time.sleep(20)
+        tv_source = sub.call('echo "as" | cec-client -s -d 1 -p 3', shell=True)
         s.iprint(tv_source, 1)
         # Set volume to 16
         # sub.call('echo "voldown 0" | cec-client -s -d 1 -p 1', shell=True)
         # sub.call('echo "volup 16" | cec-client -s -d 1 -p 1', shell=True)
-        shodan = Path('/media/pi/SHODAN/Music/')
+        shodan = Path('/mnt/pi/pi_black/not_flac/')
         wavs = shodan.rglob('*.wav')
-        mp3s = shodan.rglob('*.wav')
-        flacs = Path('/media/pi/pi_red/flac/').rglob('*.flac')
+        mp3s = shodan.rglob('*.mp3')
+        flacs = Path('/mnt/pi/pi_black/QuiGonJinnMusic/').rglob('*.flac')
         self.songs = np.array(list(wavs) + list(mp3s) + list(flacs))
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
@@ -82,14 +83,15 @@ class AlarmClock:
 
     def play_weather(self):
         report = Weather()
+        report.convert_units()
         report.make_mp3()
         report.play_forecast()
         report.send_daily('beancc_weather.key')
 
     def stop(self):
-        sub.call('echo "standby 0" | cec-client -s -d 1', shell=True)
-        sub.call('xscreensaver-command -deactivate', shell=True)
-
+        sub.call('xscreensaver-command -deactivate', shell=True) 
+        sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
+        
 
 
 def main():

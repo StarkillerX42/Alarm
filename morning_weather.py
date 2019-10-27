@@ -3,7 +3,7 @@
 import requests
 import os
 from gtts import gTTS
-from slackclient import SlackClient
+import slack
 import starcoder42 as s
 from bs4 import BeautifulSoup
 from pathlib import Path
@@ -21,17 +21,18 @@ class Weather:
         self.forecast = img.attrs['alt']
     
     def convert_units(self):
-        first_sentence = self.forecast.split('.')[0]
-        temp_fs = []
-        for i, word in enumerate(first_sentence.split(' ')):
-            try:  # Appends numbers to a list, but keeps them as strings
-                int(word)
-                temp_fs.append(word)
-            except ValueError:
-                pass
-        for i, temp_f in enumerate(temp_fs):
-            temp_c = s.fahr2cel(temp_f)
-            self.forecast.replace(temp, str(temp_c))
+        # first_sentence = self.forecast.split('.')[0]
+        # temp_fs = []
+        # for i, word in enumerate(first_sentence.split(' ')):
+        #     try:  # Appends numbers to a list, but keeps them as strings
+        #         int(word)
+        #         temp_fs.append(word)
+        #     except ValueError:
+        #         pass
+        # for i, temp_f in enumerate(temp_fs):
+        #     temp_c = s.fahr2cel(temp_f)
+        #     self.forecast.replace(temp, str(temp_c))
+        self.forecast = self.forecast.replace('mph', 'miles per hour')
 
     def make_mp3(self, filename: str = "forecast.mp3"):
         self.filename = filename
@@ -46,9 +47,8 @@ class Weather:
         key_file = (Path(__file__).parent / Path(key_file)).absolute()
         # print(key_file)
         key = key_file.open('r').read().strip('\n')
-        sc = SlackClient(key)
-        response = sc.api_call("chat.postMessage", channel=chnnl,
-                               text=self.forecast)
+        sc = slack.WebClient(token=key)
+        response = sc.chat_postMessage(channel=chnnl, text=self.forecast)
         # response = sc.api_call("chat.postMessage",
         #                        channel="@Jordan Gage", text=self.forecast)
         # response = sc.api_call("chat.postMessage",
@@ -60,6 +60,7 @@ class Weather:
 
 def main():
     report = Weather()
+    report.convert_units()
     response = report.send_daily('beancc_weather.key', '#general')
     if response["ok"]:
         pass

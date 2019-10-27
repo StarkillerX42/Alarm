@@ -42,6 +42,7 @@ class AlarmClock:
         self.songs = np.array(list(self.wavs)
                               + list(self.mp3s)
                               + list(self.flacs))
+
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
@@ -97,7 +98,7 @@ class AlarmClock:
 
     def play_weather(self):
         report = Weather()
-        report.convert-units()
+        report.convert_units()
         report.make_mp3()
         report.play_forecast()
         report.send_daily('beancc_weather.key')
@@ -106,8 +107,7 @@ class AlarmClock:
         if self.screensaver:
             sub.call('xscreensaver-command -deactivate', shell=True) 
         if self.cec:
-            sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
-        
+            sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)        
 
 
 def main():

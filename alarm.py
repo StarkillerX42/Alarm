@@ -25,7 +25,7 @@ class AlarmClock:
         self.start = datetime.datetime.now()
         s.iprint("Alarm started at {}".format(self.start), 0)
         
-        sub.call('amixer set PCM -- 40%', shell=True)
+        sub.call('amixer set PCM -- 85%', shell=True)
 
         if self.cec:
             tv_on = sub.call('echo "on 0" | cec-client -s -d 1 -p 3',

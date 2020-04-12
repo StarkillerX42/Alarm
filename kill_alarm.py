@@ -14,7 +14,7 @@ for proc in to_kill:
     pid = proc.split()[1]
     # print(pid)
     sub.call(['kill', pid])
-# time.sleep(200)
-sub.call('sleep 200; xscreensaver-command -deactivate', shell=True)
-sub.call('sleep 200; echo "standby 0" | cec-client -s -d 1', shell=True)
+time.sleep(200)
+sub.call('xscreensaver-command -deactivate', shell=True)
+sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
 

@@ -17,6 +17,8 @@ class Weather:
         noaa_page = BeautifulSoup(requests.get(noaa_url).text, 'html.parser')
         forecasts = noaa_page.find('ul', attrs={'id': 'seven-day-forecast-list'})
         today = list(forecasts)[0]
+        if 'high' not in str(today):
+            today = list(forecasts)[1]
         img = today.find('img')
         self.forecast = img.attrs['alt']
     

@@ -130,7 +130,7 @@ def main():
     alarm = AlarmClock(flacs, wavs, mp3s, screensaver=args.screensaver,
                        cec=args.cec)
     alarm.run()
-
+    alarm.stop()
 
 if __name__ == '__main__':
     main()

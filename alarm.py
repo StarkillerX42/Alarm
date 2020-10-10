@@ -32,7 +32,7 @@ class AlarmClock:
                              shell=True)
             s.iprint(tv_on, 1)
             time.sleep(20)
-            tv_source = sub.call('echo "as" | cec-client -s -d 1 -p 3',
+            tv_source = sub.call('echo "as 0" | cec-client -s -d 1 -p 3',
                                  shell=True)
             s.iprint(tv_source, 1)
             # Set volume to 16
@@ -46,8 +46,8 @@ class AlarmClock:
         np.random.shuffle(self.songs)
         s.iprint("There are {} songs".format(len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.055
-        self.volume_final = 0.14
+        self.volume_init = 0.08
+        self.volume_final = 0.17
         self.volume = self.volume_init
         if self.screensaver:
             sub.call('xscreensaver-command -activate', shell=True)
@@ -79,7 +79,12 @@ class AlarmClock:
             dt = self.play_song(song)
             # p.join()
 
-            if dt.seconds >= 30 * 60:
+            if dt.seconds < 60 * 60:
+                self.volume = (self.volume_init + (self.volume_final
+                                                   - self.volume_init)
+                               * dt.seconds / 60 / 60)
+            else:
+                self.volume = self.volume_final
                 if not self.played_weather:
                     try:
                         self.play_weather()
@@ -87,13 +92,8 @@ class AlarmClock:
                     except Exception as e:
                         print(e)
                         self.played_weather = True
-                self.volume = (self.volume_init + (self.volume_final
-                                                   - self.volume_init)
-                               * dt.seconds / 30 / 60)
-            else:
-                self.volume = self.volume_final
-
-            if dt.seconds >= 1.5 * 3600:
+            
+            if dt.seconds >= 3 * 3600:
                 return 0
 
     def play_weather(self):

@@ -4,7 +4,7 @@ import subprocess as sub
 
 print("Stopping alarm.py")
 procs = sub.Popen("ps auxf", stdout=sub.PIPE, shell=True)
-lines = np.array(procs.stdout.readlines())
+lines = np.array(procs.stdout.read().decode('utf-8').splitlines())
 is_alarm = np.array([("/alarm.py" in str(proc))
                      or (" play " in str(proc))
                      for proc in lines])

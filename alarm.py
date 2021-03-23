@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import numpy as np
-import datetime
 import time
 import sys
 import argparse
@@ -22,19 +21,21 @@ class AlarmClock:
         self.screensaver = screensaver
         self.cec = cec
 
-        self.start = datetime.datetime.now()
-        s.iprint("Alarm started at {}".format(self.start), 0)
+        self.start = time.time()
+        s.iprint("[{:12.0f}] Alarm started".format(self.start), 0)
         
         sub.call('amixer set PCM -- 85%', shell=True)
 
         if self.cec:
             tv_on = sub.call('echo "on 0" | cec-client -s -d 1 -p 3',
                              shell=True)
-            s.iprint(tv_on, 1)
+            s.iprint(f"[{time.time():12.0f}] TV turn on exit code: ",
+                    tv_on, 1)
             time.sleep(20)
             tv_source = sub.call('echo "as 0" | cec-client -s -d 1 -p 3',
                                  shell=True)
-            s.iprint(tv_source, 1)
+            s.iprint(f"[{time.time():12.0f}] TV switch source exit code ",
+                    tv_source, 1)
             # Set volume to 16
             # sub.call('echo "voldown 0" | cec-client -s -d 1 -p 1', shell=True)
             # sub.call('echo "volup 16" | cec-client -s -d 1 -p 1', shell=True)
@@ -44,10 +45,11 @@ class AlarmClock:
                               + list(self.flacs))
 
         np.random.shuffle(self.songs)
-        s.iprint("There are {} songs".format(len(self.songs)), 1)
+        s.iprint("[{:12.0f}] There are {} songs"
+                 "".format(time.time(), len(self.songs)), 1)
         self.played_weather = False
         self.volume_init = 0.08
-        self.volume_final = 0.17
+        self.volume_final = 0.16
         self.volume = self.volume_init
         if self.screensaver:
             sub.call('xscreensaver-command -activate', shell=True)
@@ -67,22 +69,23 @@ class AlarmClock:
         # print(self.volume/vol_lvl)
         res = sub.call('play -q -v {} "{}"'.format(self.volume/vol_lvl, song),
                        shell=True)
-        now = datetime.datetime.now()
+        now = time.time()
         dt = now - self.start
         return dt
 
     def run(self):
         for song in self.songs:
-            s.iprint("Playing {}".format(song), 1)
+            s.iprint("[{:12.0f}] Playing {} at volume {:.3f}"
+            "".format(time.time(), song.name, self.volume), 1)
             # p = Process(self.try_bluetooth())
             # p.start()
             dt = self.play_song(song)
             # p.join()
 
-            if dt.seconds < 60 * 60:
+            if dt < 60 * 60:
                 self.volume = (self.volume_init + (self.volume_final
                                                    - self.volume_init)
-                               * dt.seconds / 60 / 60)
+                               * dt / 60 / 60)
             else:
                 self.volume = self.volume_final
                 if not self.played_weather:
@@ -93,7 +96,7 @@ class AlarmClock:
                         print(e)
                         self.played_weather = True
             
-            if dt.seconds >= 3 * 3600:
+            if dt >= 3 * 3600:
                 return 0
 
     def play_weather(self):

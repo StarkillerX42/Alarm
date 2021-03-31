@@ -29,13 +29,12 @@ class AlarmClock:
         if self.cec:
             tv_on = sub.call('echo "on 0" | cec-client -s -d 1 -p 3',
                              shell=True)
-            s.iprint(f"[{time.time():12.0f}] TV turn on exit code: ",
-                    tv_on, 1)
+            s.iprint(f"[{time.time():12.0f}] TV turn on exit code: {tv_on}", 1)
             time.sleep(20)
             tv_source = sub.call('echo "as 0" | cec-client -s -d 1 -p 3',
                                  shell=True)
-            s.iprint(f"[{time.time():12.0f}] TV switch source exit code ",
-                    tv_source, 1)
+            s.iprint(f"[{time.time():12.0f}] TV switch source exit code"
+                     f" {tv_source}", 1)
             # Set volume to 16
             # sub.call('echo "voldown 0" | cec-client -s -d 1 -p 1', shell=True)
             # sub.call('echo "volup 16" | cec-client -s -d 1 -p 1', shell=True)

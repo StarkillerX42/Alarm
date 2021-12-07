@@ -7,6 +7,7 @@ import subprocess as sub
 from pathlib import Path
 import starcoder42 as s
 from morning_weather import Weather
+from PiTools import fairy_lights
 
 
 class AlarmClock:
@@ -14,12 +15,14 @@ class AlarmClock:
     desired amount of time, as given in an argument
     """
 
-    def __init__(self, flacs, wavs, mp3s, screensaver=False, cec=False):
+    def __init__(self, flacs, wavs, mp3s, screensaver=False, cec=False,
+                 lights=False):
         self.flacs = flacs
         self.wavs = wavs
         self.mp3s = mp3s
         self.screensaver = screensaver
         self.cec = cec
+        self.lights = lights
 
         self.start = time.time()
         s.iprint("[{:12.0f}] Alarm started".format(self.start), 0)
@@ -47,11 +50,14 @@ class AlarmClock:
         s.iprint("[{:12.0f}] There are {} songs"
                  "".format(time.time(), len(self.songs)), 1)
         self.played_weather = False
-        self.volume_init = 0.08
-        self.volume_final = 0.16
+        self.volume_init = 0.04
+        self.volume_final = 0.095
         self.volume = self.volume_init
         if self.screensaver:
             sub.call('xscreensaver-command -activate', shell=True)
+        if self.lights:
+            self.lights = fairy_lights.Lights(17)
+            self.lights.on()
 
     def try_bluetooth(self):
         nearby_devices = bt.discover_devices(lookup_names=True)
@@ -121,6 +127,8 @@ def main():
                             'xscreensaver during the alarm')
     parser.add_argument('-c', '--cec', action='store_true', default=False,
                         help='Whether or not to issue cec commands to a TV')
+    parser.add_argument("-l", "--lights", action="store_true", default=False,
+                        help="Turn on the fairy lights with the alarm")
     args = parser.parse_args()
     flacs = []
     wavs = []
@@ -130,9 +138,10 @@ def main():
         wavs += list(Path(path).rglob('*.wav'))
         mp3s += list(Path(path).rglob('*.mp3'))
     alarm = AlarmClock(flacs, wavs, mp3s, screensaver=args.screensaver,
-                       cec=args.cec)
+                       cec=args.cec, lights=args.lights)
     alarm.run()
     alarm.stop()
 
 if __name__ == '__main__':
     main()
+

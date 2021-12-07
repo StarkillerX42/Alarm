@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import subprocess as sub
+from PiTools import fairy_lights
 
 print("Stopping alarm.py")
 procs = sub.Popen("ps auxf", stdout=sub.PIPE, shell=True)
@@ -15,5 +16,8 @@ for proc in to_kill:
     id = proc.split()[1]
     # print(id)
     sub.call("kill {}".format(id), shell=True)
-sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
+# sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
+
+lights = fairy_lights.Lights(17)
+lights.off()
 

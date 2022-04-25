@@ -18,6 +18,6 @@ for proc in to_kill:
     sub.call("kill {}".format(id), shell=True)
 # sub.call('echo "standby 0" | cec-client -s -d 1 -p 3', shell=True)
 
-lights = fairy_lights.Lights(17)
+lights = fairy_lights.Lights(23)
 lights.off()
 

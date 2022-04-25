@@ -56,7 +56,7 @@ class AlarmClock:
         if self.screensaver:
             sub.call('xscreensaver-command -activate', shell=True)
         if self.lights:
-            self.lights = fairy_lights.Lights(17)
+            self.lights = fairy_lights.Lights(23)
             self.lights.on()
 
     def try_bluetooth(self):

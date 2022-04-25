@@ -16,7 +16,7 @@ for proc in to_kill:
     # print(pid)
     sub.call(['kill', pid])
 
-lights = fairy_lights.Lights(17)
+lights = fairy_lights.Lights(23)
 lights.off()
 # time.sleep(200)
 # import now_kill_alarm
